@@ -13,10 +13,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="admin" target="1.5" />
-      <module name="job" target="1.5" />
+      <module name="admin" target="1.8" />
+      <module name="job" target="1.8" />
       <module name="rest" target="1.8" />
-      <module name="template" target="1.5" />
+      <module name="template" target="1.8" />
       <module name="template-module" target="1.8" />
     </bytecodeTargetLevel>
   </component>
