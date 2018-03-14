@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>template</artifactId>
+        <groupId>template</groupId>
+        <version>master</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>deploy</artifactId>
+    <packaging>war</packaging>
+    <name>deploy Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+
+    <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <name>OSS Sonatype Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <mysql.driver.version>5.1.30</mysql.driver.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- jdbc driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.driver.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>deploy</finalName>
+        <plugins>
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.5.5</version>
+                <configuration>
+                    <!--<changeLogFile>${basedir}/src/main/resources/conf/business_table.xml</changeLogFile>-->
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                    <propertyFileWillOverride>true</propertyFileWillOverride>
+                    <logging>debug</logging>
+                    <propertyFile>${basedir}/src/main/resources/conf/liquibase.properties</propertyFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
