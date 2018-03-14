@@ -10,6 +10,7 @@
         <module>rest</module>
         <module>template-module</module>
         <module>job</module>
+        <module>deploy</module>
     </modules>
     <name>template Maven Webapp</name>
     <url>http://maven.apache.org</url>
