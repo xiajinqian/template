@@ -45,8 +45,9 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.5.5</version>
+
                 <configuration>
-                    <!--<changeLogFile>${basedir}/src/main/resources/conf/business_table.xml</changeLogFile>-->
+                    <changeLogFile>${basedir}/src/main/resources/conf/business_table.xml</changeLogFile>
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                     <propertyFileWillOverride>true</propertyFileWillOverride>
                     <logging>debug</logging>
